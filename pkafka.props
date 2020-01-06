@@ -1,0 +1,35 @@
+gg.handlerlist = kafkahandler
+gg.handler.kafkahandler.type=kafka
+gg.handler.kafkahandler.KafkaProducerConfigFile=custom_kafka_producer.properties
+#The following resolves the topic name using the short table name
+gg.handler.kafkahandler.topicMappingTemplate=passports
+#The following selects the message key using the concatenated primary keys
+#gg.handler.kafkahandler.keyMappingTemplate=${PASSPORT_ID_PPS_ID}
+gg.handler.kafkahandler.format=json
+#gg.handler.kafkahandler.SchemaTopicName=mySchemaTopic
+gg.handler.kafkahandler.BlockingSend =false
+gg.handler.kafkahandler.includeTokens=false
+gg.handler.kafkahandler.mode=op
+#gg.handler.kafkahandler.format.insertOpKey=I
+#gg.handler.kafkahandler.format.updateOpKey=U
+#gg.handler.kafkahandler.format.deleteOpKey=D
+#gg.handler.kafkahandler.format.truncateOpKey=T
+#gg.handler.kafkahandler.format.includeColumnNames=TRUE
+#gg.handler.kafkahandler.format.treatAllColumnsAsStrings=true
+goldengate.userexit.timestamp=utc
+goldengate.userexit.writers=javawriter
+javawriter.stats.display=TRUE
+javawriter.stats.full=TRUE
+
+gg.log=log4j
+gg.log.level=info
+
+gg.report.time=30sec
+
+#Sample gg.classpath for Apache Kafka
+gg.classpath=dirprm/:/u01/ggadapter/kafka/libs/*
+#Sample gg.classpath for HDP
+#gg.classpath=/etc/kafka/conf:/usr/hdp/current/kafka-broker/libs/*
+
+#javawriter.bootoptions=-Xmx512m -Xms32m -Djava.class.path=ggjava/ggjava.jar
+javawriter.bootoptions=-Xmx512m -Xms32m -Djava.class.path=/u01/ggadapter/ggjava/ggjava.jar

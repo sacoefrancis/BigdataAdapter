@@ -1,0 +1,19 @@
+REPLICAT pkafka
+--SETENV (ORACLE_HOME = "/u01/app/oracle/product/11.2.0/EE")
+--SETENV (ORACLE_SID = "EE")
+-- Trail file for this example is located in "AdapterExamples/trail" directory
+-- Command to add REPLICAT
+-- add replicat rkafka, exttrail AdapterExamples/u05/extract1/e1
+TARGETDB LIBFILE /u01/ggadapter/libggjava.so SET property=/u01/ggadapter/dirprm/pkafka.props
+--DDL INCLUDE ALL
+REPORTCOUNT EVERY 1 MINUTES, RATE
+GROUPTRANSOPS 1000
+--GETUPDATEBEFORES
+--NOCOMPRESSDELETES
+--NOCOMPRESSUPDATES
+--UPDATERECORDFORMAT COMPACT
+--LOGALLSUPCOLS
+SOURCEDEFS ./dirsql/SOURCE_DEFGEN_P.def
+--ASSUMETARGETDEFS
+MAP vision_app.passport, TARGET myschematopic.passports;
+

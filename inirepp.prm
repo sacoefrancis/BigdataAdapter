@@ -1,0 +1,11 @@
+REPLICAT inirepp
+--SPECIALRUN
+--END RUNTIME
+TARGETDB LIBFILE /u01/ggadapter/libggjava.so SET property=/u01/ggadapter/dirprm/pkafka.props
+--EXTFILE /u01/t2
+REPORTCOUNT EVERY 1 MINUTES, RATE
+GROUPTRANSOPS 10000
+SOURCEDEFS ./dirsql/SOURCE_DEFGEN_P.def
+--SOURCECHARSET PASSTHRU
+MAP vision_app.passport, TARGET myschematopic.passports;
+
