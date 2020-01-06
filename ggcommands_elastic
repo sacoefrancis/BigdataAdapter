@@ -1,0 +1,36 @@
+create user ggs_admin identified by ggs_admin;
+
+grant create session,dba to ggs_admin identified by ggs_admin;
+
+
+
+edit params ./GLOBALS
+
+GSCHEMA ggs_admin
+CHECKPOINTTABLE ggs_admin.checkpointtable
+
+--sync
+add extract pkafka,begin now
+ADD EXTTRAIL /u01/OGG/gg/dirdat/p3,EXTRACT pkafka
+add replicat pkafka,exttrail /u01/OGG/gg/dirdat/t3
+
+
+--initial load 
+ADD extract inirepi, SPECIALRUN
+
+add replicat inirepi,exttrail /u01/OGG/gg/dirdat/t7
+
+
+ALLOWOUTPUTDIR /u01
+
+
+--add tables
+DBLOGIN USERID ggs_admin, PASSWORD ggs_admin
+
+ADD TRANDATA vision_app.passport ALLCOLS
+
+
+ADD TRANDATA vision_app.individual_profile ALLCOLS
+
+
+add replicat

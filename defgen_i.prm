@@ -1,0 +1,3 @@
+defsfile ./dirsql/SOURCE_DEFGEN_I.def
+userid ggs_admin password ggs_admin
+TABLE vision_app.individual_profile;

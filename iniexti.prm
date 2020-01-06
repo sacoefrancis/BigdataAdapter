@@ -1,0 +1,8 @@
+EXTRACT iniexti
+--SOURCEISTABLE
+USERID ggs_admin, PASSWORD ggs_admin
+RMTHOST 172.17.0.2, MGRPORT 7809
+--RMTTASK REPLICAT, GROUP initrep
+RMTFILE /u01/OGG/gg/dirdat/t7, MEGABYTES 2000
+--PASSTHRU 
+TABLE vision_app.individual_profile;

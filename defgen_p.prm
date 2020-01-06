@@ -1,0 +1,4 @@
+defsfile ./dirsql/SOURCE_DEFGEN_P.def
+userid ggs_admin password ggs_admin
+TABLE vision_app.passport;
+
